@@ -82,5 +82,10 @@ namespace Library.Domain.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        ~BaseRepository()
+        {
+            Dispose(false);
+        }
     }
 }
