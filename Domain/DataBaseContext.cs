@@ -21,6 +21,7 @@ namespace Library.Domain
 
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<Genre> Genres { get; set; }
         public DbSet<BookActivity> BookActivities { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

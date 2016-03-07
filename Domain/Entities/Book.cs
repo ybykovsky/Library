@@ -17,11 +17,14 @@ namespace Library.Domain.Entities
         [ForeignKey("AuthorId")]
         public Author Author { get; set; }
 
+        public virtual ICollection<Genre> Genres { get; set; }
         public virtual ICollection<UserBook> UserBooks { get; set; }
         public virtual ICollection<BookActivity> BookActivities { get; set; }
 
+
         public Book()
         {
+            Genres = new List<Genre>();
             UserBooks = new List<UserBook>();
             BookActivities = new List<BookActivity>();
         }

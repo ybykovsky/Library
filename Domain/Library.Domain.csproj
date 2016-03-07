@@ -61,6 +61,7 @@
     <Compile Include="Entities\BookActivity.cs" />
     <Compile Include="Entities\Author.cs" />
     <Compile Include="Entities\Book.cs" />
+    <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserBook.cs" />
     <Compile Include="Enums\BookingStatus.cs" />

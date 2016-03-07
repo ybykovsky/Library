@@ -72,14 +72,21 @@ namespace Library.Domain
 
         private void InitializeDefaultAuthorsAndBooks(DataBaseContext context)
         {
+            Genre detectiveGenre = new Genre
+            {
+                Name = "Detective"
+            };
+
+            context.Genres.Add(detectiveGenre);
+
             Author authorBob = new Author
             {
                 FirstName = "Bob",
                 LastName = "Jobson",
                 Books = new List<Book>()
                 {
-                    new Book { Title = "How to earn cash", Count = 2 },
-                    new Book { Title = "Boring book", Count = 1 }
+                    new Book { Title = "How to earn cash", Count = 2, Genres = new List<Genre> { detectiveGenre } },
+                    new Book { Title = "Boring book", Count = 1, Genres = new List<Genre> { detectiveGenre } }
                 }
             };
 
