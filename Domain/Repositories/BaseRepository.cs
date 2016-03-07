@@ -2,10 +2,11 @@
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using Library.Domain.Entities;
+using Library.Domain.Interfaces;
 
 namespace Library.Domain.Repositories
 {
-    public class BaseRepository<TEntity> : IDisposable where TEntity : BaseEntity
+    public class BaseRepository<TEntity> : IDisposable where TEntity : class, IEntity
     {
         protected DataBaseContext context;
         protected DbSet<TEntity> dbSet;

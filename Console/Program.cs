@@ -24,7 +24,7 @@ namespace Library.TestApp
 
                     foreach (User user in userRepository.All.AsNoTracking())
                     {
-                        Console.WriteLine(user.Name);
+                        Console.WriteLine(user.UserName);
                     }
 
                     Book book = bookRepository.All.First();

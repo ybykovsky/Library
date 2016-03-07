@@ -2,21 +2,75 @@
 using Library.Domain.Enums;
 using System.Collections.Generic;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Library.Domain
 {
-    public class ContextInitializer : CreateDatabaseIfNotExists<DataBaseContext>
+    public class ContextInitializer : DropCreateDatabaseAlways<DataBaseContext> //CreateDatabaseIfNotExists<DataBaseContext>
     {
         protected override void Seed(DataBaseContext context)
         {
-            User userEric = new User { Name = "Eric", Email = "eric@lib.com", Password = "admin", Role = UserRole.User };
-            User userJohn = new User { Name = "John", Email = "john@lib.com", Password = "admin", Role = UserRole.User };
-            User userYury = new User { Name = "Yury", Email = "yury@lib.com", Password = "admin", Role = UserRole.Moderator };
+            InitializeDefaultUserAndRoles(context);
+            InitializeDefaultAuthorsAndBooks(context);
+        }
 
-            context.Users.Add(userEric);
-            context.Users.Add(userJohn);
-            context.Users.Add(userYury);
 
+        private void InitializeDefaultUserAndRoles(DataBaseContext context)
+        {
+            var userManager = new UserManager<User>(new UserStore<User>(context));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            userManager.PasswordValidator = new PasswordValidator
+            {
+                RequiredLength = 4,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false
+            };
+
+            string userRole = "User";
+            string adminRole = "Admin";
+
+            if (!roleManager.RoleExists(adminRole))
+            {
+                roleManager.Create(new IdentityRole(adminRole));
+            }
+
+            if (!roleManager.RoleExists(userRole))
+            {
+                roleManager.Create(new IdentityRole(userRole));
+            }
+
+            User adminUser = new User
+            {
+                UserName = "Admin",
+                Email = "admin@admin.com"
+            };
+
+            var adminUserResult = userManager.Create(adminUser, "admin");
+            if (adminUserResult.Succeeded)
+            {
+                userManager.AddToRole(adminUser.Id, adminRole);
+            }
+
+
+            User userUser = new User
+            {
+                UserName = "User",
+                Email = "user@user.com"
+            };
+
+            var userUserResult = userManager.Create(userUser, "user");
+            if (userUserResult.Succeeded)
+            {
+                userManager.AddToRole(userUser.Id, userRole);
+            }
+        }
+
+        private void InitializeDefaultAuthorsAndBooks(DataBaseContext context)
+        {
             Author authorBob = new Author
             {
                 FirstName = "Bob",

@@ -13,10 +13,10 @@ namespace Library.Domain.Entities
         public BookingStatus Status { get; set; }
         public DateTime Date { get; set; }
 
-        public Guid BookId { get; set; }
+        public string BookId { get; set; }
         public Book Book { get; set; }
 
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace Library.Domain.Entities
 
         public int Count { get; set; }
 
-        public Guid AuthorId { get; set; }
+        public string AuthorId { get; set; }
         [ForeignKey("AuthorId")]
         public Author Author { get; set; }
 
