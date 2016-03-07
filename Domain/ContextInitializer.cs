@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace Library.Domain
 {
-    public class ContextInitializer : DropCreateDatabaseAlways<DataBaseContext> //CreateDatabaseIfNotExists<DataBaseContext>
+    public class ContextInitializer : CreateDatabaseIfNotExists<DataBaseContext> // DropCreateDatabaseAlways<DataBaseContext>
     {
         protected override void Seed(DataBaseContext context)
         {
@@ -18,8 +19,8 @@ namespace Library.Domain
 
         private void InitializeDefaultUserAndRoles(DataBaseContext context)
         {
-            var userManager = new UserManager<User>(new UserStore<User>(context));
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var userManager = new UserManager<User, Guid>(new UserStore(context));
+            var roleManager = new RoleManager<Role, Guid>(new RoleStore(context));
 
             userManager.PasswordValidator = new PasswordValidator
             {
@@ -35,21 +36,21 @@ namespace Library.Domain
 
             if (!roleManager.RoleExists(adminRole))
             {
-                roleManager.Create(new IdentityRole(adminRole));
+                roleManager.Create(new Role(adminRole));
             }
 
             if (!roleManager.RoleExists(userRole))
             {
-                roleManager.Create(new IdentityRole(userRole));
+                roleManager.Create(new Role(userRole));
             }
 
             User adminUser = new User
             {
-                UserName = "Admin",
+                UserName = "admin@admin.com",
                 Email = "admin@admin.com"
             };
 
-            var adminUserResult = userManager.Create(adminUser, "admin");
+            var adminUserResult = userManager.Create(adminUser, "123456");
             if (adminUserResult.Succeeded)
             {
                 userManager.AddToRole(adminUser.Id, adminRole);
@@ -58,11 +59,11 @@ namespace Library.Domain
 
             User userUser = new User
             {
-                UserName = "User",
+                UserName = "user@user.com",
                 Email = "user@user.com"
             };
 
-            var userUserResult = userManager.Create(userUser, "user");
+            var userUserResult = userManager.Create(userUser, "123456");
             if (userUserResult.Succeeded)
             {
                 userManager.AddToRole(userUser.Id, userRole);
@@ -74,10 +75,10 @@ namespace Library.Domain
             Author authorBob = new Author
             {
                 FirstName = "Bob",
-                LastName = "Gop",
+                LastName = "Jobson",
                 Books = new List<Book>()
                 {
-                    new Book { Title = "Interstellar", Count = 2 },
+                    new Book { Title = "How to earn cash", Count = 2 },
                     new Book { Title = "Boring book", Count = 1 }
                 }
             };

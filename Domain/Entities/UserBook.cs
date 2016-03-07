@@ -8,11 +8,11 @@ namespace Library.Domain.Entities
     public class UserBook
     {
         [Key, Column(Order = 0)]
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
         public User User { get; set; }
 
         [Key, Column(Order = 1)]
-        public string BookId { get; set; }
+        public Guid BookId { get; set; }
         public Book Book { get; set; }
 
         public BookingStatus Status { get; set; }

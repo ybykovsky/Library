@@ -6,10 +6,10 @@ using Library.Domain.Entities;
 
 namespace Library.Domain
 {
-    public class DataBaseContext : IdentityDbContext<User>
+    public class DataBaseContext : IdentityDbContext<User, Role, Guid, UserLogin, UserRole, UserClaim>
     {
         public DataBaseContext()
-            : base("DbConnection", throwIfV1Schema: false)
+            : base("DbConnection")
         {
             Database.SetInitializer<DataBaseContext>(new ContextInitializer());
         }
@@ -28,14 +28,18 @@ namespace Library.Domain
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>()
-                .ToTable("Users");
-                //.Property(p => p.Id)
-                //.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                .ToTable("Users")
+                .Property(p => p.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
-            modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+            modelBuilder.Entity<Role>()
+                .ToTable("Roles")
+                .Property(p => p.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            modelBuilder.Entity<UserClaim>().ToTable("UserClaims");
+            modelBuilder.Entity<UserRole>().ToTable("UserRoles");
+            modelBuilder.Entity<UserLogin>().ToTable("UserLogins");
         }
     }
 }

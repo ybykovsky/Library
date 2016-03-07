@@ -7,13 +7,12 @@ namespace Library.Domain.Entities
 {
     public class BaseEntity : IEntity
     {
-        //[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
-        public string Id { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
 
-        public BaseEntity()
-        {
-            Id = Guid.NewGuid().ToString();
-        }
+        //public BaseEntity()
+        //{
+        //    Id = Guid.NewGuid().ToString();
+        //}
     }
 }

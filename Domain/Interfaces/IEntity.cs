@@ -8,6 +8,6 @@ namespace Library.Domain.Interfaces
 {
     public interface IEntity
     {
-        string Id { get; set; }
+        Guid Id { get; set; }
     }
 }

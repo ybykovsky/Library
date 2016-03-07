@@ -64,6 +64,8 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserBook.cs" />
     <Compile Include="Enums\BookingStatus.cs" />
+    <Compile Include="Extensions\ConverterExt.cs" />
+    <Compile Include="Extensions\IdentityExt.cs" />
     <Compile Include="Interfaces\IAuthorRepository.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
