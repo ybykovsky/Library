@@ -1,0 +1,3 @@
+﻿var HomeController = function ($scope) {
+
+}
