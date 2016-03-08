@@ -72,6 +72,7 @@
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IBookActivityRepository.cs" />
     <Compile Include="Interfaces\IBookRepository.cs" />
+    <Compile Include="Interfaces\IGenreRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="DataBaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\BookActivityRepository.cs" />
     <Compile Include="Repositories\BookRepository.cs" />
+    <Compile Include="Repositories\GenreRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

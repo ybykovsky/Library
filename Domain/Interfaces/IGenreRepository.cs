@@ -2,7 +2,7 @@
 
 namespace Library.Domain.Interfaces
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IGenreRepository : IBaseRepository<Genre>
     {
     }
 }

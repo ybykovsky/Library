@@ -24,6 +24,9 @@ namespace Library.Domain.Entities
 
     public class User : IdentityUser<Guid, UserLogin, UserRole, UserClaim>, IEntity
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
         public virtual ICollection<UserBook> UserBooks { get; set; }
         public virtual ICollection<BookActivity> BookActivities { get; set; }
 
@@ -40,6 +43,8 @@ namespace Library.Domain.Entities
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
+            userIdentity.AddClaim(new Claim("firstName", FirstName));
+            userIdentity.AddClaim(new Claim("lastName", LastName));
             return userIdentity;
         }
     }

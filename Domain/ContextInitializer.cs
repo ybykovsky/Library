@@ -8,7 +8,7 @@ using System;
 
 namespace Library.Domain
 {
-    public class ContextInitializer : CreateDatabaseIfNotExists<DataBaseContext> // DropCreateDatabaseAlways<DataBaseContext>
+    public class ContextInitializer : /*CreateDatabaseIfNotExists<DataBaseContext>*/ DropCreateDatabaseAlways<DataBaseContext>
     {
         protected override void Seed(DataBaseContext context)
         {
@@ -47,7 +47,9 @@ namespace Library.Domain
             User adminUser = new User
             {
                 UserName = "admin@admin.com",
-                Email = "admin@admin.com"
+                Email = "admin@admin.com",
+                FirstName = "Admin",
+                LastName = "Admin"
             };
 
             var adminUserResult = userManager.Create(adminUser, "123456");
@@ -60,7 +62,9 @@ namespace Library.Domain
             User userUser = new User
             {
                 UserName = "user@user.com",
-                Email = "user@user.com"
+                Email = "user@user.com",
+                FirstName = "User",
+                LastName = "User"
             };
 
             var userUserResult = userManager.Create(userUser, "123456");
