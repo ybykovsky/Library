@@ -19,23 +19,35 @@ namespace Library.TestApp
             {
                 using (DataBaseContext context = new DataBaseContext())
                 {
-                    UserRepository userRepository = new UserRepository(context);
+                    context.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+
+                    //UserRepository userRepository = new UserRepository(context);
+                    //BookRepository bookRepository = new BookRepository(context);
+
+                    //foreach (User user in userRepository.All.AsNoTracking())
+                    //{
+                    //    Console.WriteLine(user.UserName);
+                    //}
+
+                    //Book book = bookRepository.All.First();
+                    //User user1 = userRepository.All.First();
+
+                    //user1.UserBooks.Add(new UserBook
+                    //{
+                    //    Book = book,
+                    //    Date = DateTime.UtcNow,
+                    //    Status = BookingStatus.Reserved
+                    //});
+
                     BookRepository bookRepository = new BookRepository(context);
+                    AuthorRepository authorRepository = new AuthorRepository(context);
 
-                    foreach (User user in userRepository.All.AsNoTracking())
-                    {
-                        Console.WriteLine(user.UserName);
-                    }
+                    //Console.WriteLine(bookRepository.All.First().Title);
 
-                    Book book = bookRepository.All.First();
-                    User user1 = userRepository.All.First();
-
-                    user1.UserBooks.Add(new UserBook
-                    {
-                        Book = book,
-                        Date = DateTime.UtcNow,
-                        Status = BookingStatus.Reserved
-                    });
+                    Author author = authorRepository.All.First();
+                    var query = bookRepository.FindAllByAuthor(author.Id);
+                    var a = query.ToList();
+                    var b = query.ToList();
 
                     context.SaveChanges();
                 }
