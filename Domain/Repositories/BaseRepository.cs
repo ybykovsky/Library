@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using Library.Domain.Entities;
 using Library.Domain.Interfaces;
+using System.Linq;
 
 namespace Library.Domain.Repositories
 {
@@ -21,6 +22,11 @@ namespace Library.Domain.Repositories
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();
+        }
+
+        public virtual IQueryable<TEntity> GetAll()
+        {
+            return dbSet;
         }
 
         public virtual TEntity GetById(object id)

@@ -15,10 +15,5 @@ namespace Library.Domain.Repositories
             : base(context)
         { 
         }
-
-        public IQueryable<Genre> All
-        {
-            get { return context.Genres; }
-        }
     }
 }

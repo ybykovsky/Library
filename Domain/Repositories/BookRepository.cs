@@ -20,14 +20,9 @@ namespace Library.Domain.Repositories
         { 
         }
 
-        public IQueryable<Book> All
-        {
-            get { return context.Books; }
-        }
-
         public IQueryable<Book> FindAllByAuthor(Guid authorId)
         {
-            return All.Where(p => p.AuthorId == authorId);
+            return GetAll().Where(p => p.AuthorId == authorId);
         }
     }
 }

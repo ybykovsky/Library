@@ -19,10 +19,5 @@ namespace Library.Domain.Repositories
             : base(context)
         {
         }
-
-        public IQueryable<BookActivity> All
-        {
-            get { return context.BookActivities; }
-        }
     }
 }

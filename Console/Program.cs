@@ -44,7 +44,7 @@ namespace Library.TestApp
 
                     //Console.WriteLine(bookRepository.All.First().Title);
 
-                    Author author = authorRepository.All.First();
+                    Author author = authorRepository.GetAll().First();
                     var query = bookRepository.FindAllByAuthor(author.Id);
                     var a = query.ToList();
                     var b = query.ToList();

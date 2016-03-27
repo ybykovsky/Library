@@ -8,9 +8,12 @@ namespace Library.Domain
 {
     public class DataBaseContext : IdentityDbContext<User, Role, Guid, UserLogin, UserRole, UserClaim>
     {
+        public Guid T { get; set; }
+
         public DataBaseContext()
             : base("DbConnection")
         {
+            T = Guid.NewGuid();
             Database.SetInitializer<DataBaseContext>(new ContextInitializer());
         }
 

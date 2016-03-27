@@ -19,10 +19,5 @@ namespace Library.Domain.Repositories
             : base(context)
         { 
         }
-
-        public IQueryable<Author> All
-        {
-            get { return context.Authors; }
-        }
     }
 }

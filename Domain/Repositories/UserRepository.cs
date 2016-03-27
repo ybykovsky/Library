@@ -19,10 +19,5 @@ namespace Library.Domain.Repositories
             : base(context)
         { 
         }
-
-        public IQueryable<User> All
-        {
-            get { return context.Users; }
-        }
     }
 }

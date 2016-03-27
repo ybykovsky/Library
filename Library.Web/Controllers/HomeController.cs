@@ -13,16 +13,18 @@ namespace Library.Web.Controllers
     {
         private ISiteConfig _siteConfig;
         private IBookRepository _bookRepository;
+        private IAuthorRepository _authorRepository;
 
-        public HomeController(ISiteConfig siteConfig, IBookRepository bookRepository)
+        public HomeController(ISiteConfig siteConfig, IBookRepository bookRepository, IAuthorRepository authorRepository)
         {
             _siteConfig = siteConfig;
             _bookRepository = bookRepository;
+            _authorRepository = authorRepository;
         }
 
         public ActionResult Index()
         {
-            Book book =_bookRepository.All.FirstOrDefault();
+            Book book =_bookRepository.GetAll().FirstOrDefault();
 
             if (book != null)
             {
