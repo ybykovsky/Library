@@ -11,6 +11,8 @@ namespace Library.Web.App_Start
     using Library.Web.Infrastructure;
     using Library.Web.Infrastructure.Interfaces;
     using Library.Domain;
+    using Library.Core.Interfaces;
+    using Library.Core.Managers;
 
     public static class LightInjectInitializer
     {
@@ -34,6 +36,8 @@ namespace Library.Web.App_Start
             container.Register<IBookActivityRepository, BookActivityRepository>(new PerScopeLifetime());
             container.Register<IAuthorRepository, AuthorRepository>(new PerScopeLifetime());
             container.Register<IGenreRepository, GenreRepository>(new PerScopeLifetime());
+
+            container.Register<IBookManager, BookManager>(new PerScopeLifetime());
         }
     }
 }

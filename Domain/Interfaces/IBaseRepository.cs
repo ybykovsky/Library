@@ -7,6 +7,7 @@ namespace Library.Domain.Interfaces
         IQueryable<T> GetAll();
         T GetById(object id);
         void Insert(T entity);
+        void Save();
         void Update(T entity);
         void Delete(object id);
         void Delete(T entity);

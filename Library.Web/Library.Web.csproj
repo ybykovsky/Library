@@ -290,6 +290,10 @@
       <Project>{2c48c699-1b60-43b8-a79e-b48643595fe7}</Project>
       <Name>Library.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Library.Core\Library.Core.csproj">
+      <Project>{44334840-5802-422c-aace-ee6419d3db6e}</Project>
+      <Name>Library.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -6,25 +6,27 @@ using System.Web.Mvc;
 using Library.Domain.Interfaces;
 using Library.Web.Infrastructure.Interfaces;
 using Library.Domain.Entities;
+using Library.Core.Interfaces;
 
 namespace Library.Web.Controllers
 {
     public class HomeController : Controller
     {
         private ISiteConfig _siteConfig;
-        private IBookRepository _bookRepository;
         private IAuthorRepository _authorRepository;
 
-        public HomeController(ISiteConfig siteConfig, IBookRepository bookRepository, IAuthorRepository authorRepository)
+        private IBookManager _bookManager;
+
+        public HomeController(ISiteConfig siteConfig, IBookManager bookManager, IAuthorRepository authorRepository)
         {
             _siteConfig = siteConfig;
-            _bookRepository = bookRepository;
             _authorRepository = authorRepository;
+            _bookManager = bookManager;
         }
 
         public ActionResult Index()
         {
-            Book book =_bookRepository.GetAll().FirstOrDefault();
+            Book book = _bookManager.GetAllBooks().FirstOrDefault();
 
             if (book != null)
             {
