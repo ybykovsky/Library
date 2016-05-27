@@ -41,5 +41,9 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        LibraryApp.rootPath = '@Url.Content("~")';
+        @RenderSection("jsCpde", required: false)
+    </script>
 </body>
 </html>

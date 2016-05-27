@@ -1059,6 +1059,7 @@
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Books\ViewModels\" />
     <Folder Include="App_Data\" />
     <Folder Include="UserContent\" />
   </ItemGroup>
