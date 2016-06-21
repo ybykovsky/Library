@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Books";
+}
+
+@section scripts {
+    <script src="~/App/Books/booksApp.js"></script>
+    <script src="~/App/Books/ViewModels/BooksController.js"></script>
+}
+
+@section jsCode {
+    angular.bootstrap(document.getElementById('books'), ['Books'])
+}
+
+<div ng-non-bindable>
+    <div id="books" ng-controller="BookController">
+        {{message}}
+        <div ng-view></div>
+    </div>
+</div>
+

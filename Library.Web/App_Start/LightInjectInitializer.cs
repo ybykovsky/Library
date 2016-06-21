@@ -13,6 +13,7 @@ namespace Library.Web.App_Start
     using Library.Domain;
     using Library.Core.Interfaces;
     using Library.Core.Managers;
+    using System.Web.Http;
 
     public static class LightInjectInitializer
     {
@@ -20,7 +21,10 @@ namespace Library.Web.App_Start
         {
             var container = new ServiceContainer();
             container.RegisterControllers();
+            container.RegisterApiControllers();
             container.EnableMvc();
+            container.EnablePerWebRequestScope();
+            container.EnableWebApi(GlobalConfiguration.Configuration);
             InitializeContainer(container);
         }
 

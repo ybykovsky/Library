@@ -43,8 +43,8 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="LightInject, Version=4.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LightInject.4.0.8\lib\net45\LightInject.dll</HintPath>
+    <Reference Include="LightInject, Version=4.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LightInject.4.0.9\lib\net45\LightInject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LightInject.Mvc, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
@@ -55,9 +55,13 @@
       <HintPath>..\packages\LightInject.Web.1.0.0.7\lib\net45\LightInject.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LightInject.WebApi, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LightInject.WebApi.1.0.0.4\lib\net45\LightInject.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -204,6 +208,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Books\booksApp.js" />
+    <Content Include="App\Books\ViewModels\BooksController.js" />
+    <Content Include="App\Books\Views\bookDetails.html" />
+    <Content Include="App\Books\Views\bookList.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -212,6 +220,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="App\app.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -239,8 +248,6 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="App\app.js" />
-    <Content Include="App\home.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -1056,10 +1063,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Books.cshtml" />
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Books\ViewModels\" />
     <Folder Include="App_Data\" />
     <Folder Include="UserContent\" />
   </ItemGroup>

@@ -26,12 +26,12 @@ namespace Library.Web.Controllers
 
         public ActionResult Index()
         {
-            Book book = _bookManager.GetAllBooks().FirstOrDefault();
+            //Book book = _bookManager.GetAllBooks().FirstOrDefault();
 
-            if (book != null)
-            {
-                ViewBag.bookName = book.Title;
-            }
+            //if (book != null)
+            //{
+            //    ViewBag.bookName = book.Title;
+            //}
 
             return View();
         }
@@ -46,6 +46,13 @@ namespace Library.Web.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Books()
+        {
+            ViewBag.Message = "Books section.";
 
             return View();
         }
